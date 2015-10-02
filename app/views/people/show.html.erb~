@@ -1,0 +1,7 @@
+<% @person.attributes.each do |key,value| %>
+<% if key!='id' and key!='created_at' and key!='updated_at' %>
+<%= key %> <%= value %> <br>
+<% end %>
+<% end %>
+<%= link_to 'Edit', edit_person_path(@person) %> |
+<%= link_to 'Back', people_path %>

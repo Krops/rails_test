@@ -1,0 +1,36 @@
+<%= form_for @person do |f| %>
+ <% if @person.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@person.errors.count, "error") %> prohibited
+        this article from being saved:
+      </h2>
+      <ul>
+        <% @person.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+<table>
+<tr><td><%= f.label :'Name' %></td>
+<td><%= f.text_field :'Name' %></td></tr>
+<tr><td><%= f.label :'Last name' %></td>
+<td><%= f.text_field :'Last_Name' %></td></tr>
+<tr><td><%= f.label :'Birth' %></td>
+<td><%= f.date_field :'Date_of_birth' %></td></tr>
+<tr><td><%= f.label :'Email' %></td>
+<td><%= f.email_field :'Email' %></td></tr>
+<tr><td><%= f.label :'Skype' %></td>
+<td><%= f.text_field :'Skype' %></td></tr>
+<tr><td><%= f.label :'Jabber' %></td>
+<td><%= f.text_field :'Jabber' %></td></tr>
+<tr><td><%= f.label :'Contacts' %></td>
+<td><%= f.text_field :'Contacts' %></td></tr>
+<tr><td><%= f.label :'Other_contacts' %></td>
+<td><%= f.text_field :'Other_contacts' %></td></tr>
+<tr><td><%= f.label :'Bio' %></td>
+<td><%= f.text_field :'Bio' %></td></tr>
+<%= f.submit %>
+</table>
+<% end %>

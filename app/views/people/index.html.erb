@@ -1,0 +1,18 @@
+<%= link_to 'New Person', new_person_path %>
+<h1>Personal Information</h1>
+<table cellspacing='0' class="table table-bordered table-hover">
+<tr><td>Name</td><td>Last Name</td><td>Edit</td><td>Delete</td></tr>
+<% @people.each do |persone| %>
+<tr>
+<% persone.attributes.each do |key,value| %>
+<% if key=='Name' or key=='Last_Name' %>
+<td><%= value %></td>
+<% end %>
+<% end %>
+<td><%= link_to 'Edit', edit_person_path(persone) %></td>
+<td><%= link_to 'Destroy', person_path(persone), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+</tr>
+<tr><td><%= link_to 'Show', person_path(persone) %></td></tr>
+<% end %>
+<br>
+</table>
