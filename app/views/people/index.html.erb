@@ -1,18 +1,32 @@
-<%= link_to 'New Person', new_person_path %>
+<style>
+table, h1 {
+    border-collapse: collapse;
+    margin: 0 auto;
+    text-align: center;
+}
+table, th, td {
+   border: 1px solid black;
+}
+td {
+    padding: 15px;
+}
+</style>
+
 <h1>Personal Information</h1>
 <table cellspacing='0' class="table table-bordered table-hover">
-<tr><td>Name</td><td>Last Name</td><td>Edit</td><td>Delete</td></tr>
+<tr><td>Avatar</td><td>Name</td><td>Last Name</td><td>Edit</td><td>Delete</td></tr>
 <% @people.each do |persone| %>
 <tr>
+<td><%= image_tag persone.avatar.url(:thumb) %></td>
 <% persone.attributes.each do |key,value| %>
 <% if key=='Name' or key=='Last_Name' %>
-<td><%= value %></td>
+<td><%= link_to value, person_path(persone) %></td>
 <% end %>
 <% end %>
 <td><%= link_to 'Edit', edit_person_path(persone) %></td>
 <td><%= link_to 'Destroy', person_path(persone), method: :delete, data: { confirm: 'Are you sure?' } %></td>
 </tr>
-<tr><td><%= link_to 'Show', person_path(persone) %></td></tr>
 <% end %>
-<br>
+<tr><td colspan="5"><%= link_to 'New Person', new_person_path %></td></tr>
 </table>
+

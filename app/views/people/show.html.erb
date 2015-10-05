@@ -1,7 +1,11 @@
-<% @person.attributes.each do |key,value| %>
-<% if key!='id' and key!='created_at' and key!='updated_at' %>
-<%= key %> : <%= value %> <br>
+<table>
+<tr><td rowspan="9"><%= image_tag @person.avatar.url(:medium) %></td></tr>
+<% @person.attributes.each_with_index do |key,index| %>
+<% if index>1 and index<10 %>
+<tr><td><%= key[0] %> : <%= key[1] %></td></tr>
 <% end %>
 <% end %>
-<%= link_to 'Edit', edit_person_path(@person) %> |
-<%= link_to 'Back', people_path %>
+<tr><td>
+<%= link_to 'Edit', edit_person_path(@person) %> </td><td>
+<%= link_to 'Back', people_path %></td></tr>
+</table>
