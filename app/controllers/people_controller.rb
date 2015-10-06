@@ -12,26 +12,22 @@ class PeopleController < ApplicationController
 	@person = Person.find(params[:id])
     end
     def create
-	@person = Person.new(person_params)
-	if @person.save
-	    redirect_to @person
-	else
-	    render 'new'
-	end
+	@people = Person.all
+	@person = Person.create(person_params)
     end
 
     def update
+	@people = Person.all
 	@person = Person.find(params[:id])
-	if @person.update(person_params)
-	    redirect_to @person
-	else
-	    render 'edit'
-	end
+	@person.update_attributes(person_params)
+    end
+    def delete
+	@person = Person.find(params[:person_id])
     end
     def destroy
+	@people = Person.all
 	@person = Person.find(params[:id])
 	@person.destroy
-	redirect_to people_path
     end
     private
     def person_params

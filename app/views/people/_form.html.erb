@@ -1,19 +1,24 @@
-<%= form_for @person do |f| %>
+<div class="modal-dialog">
+  <div class="modal-content">
+<%= form_for @person, remote: true, authenticity_token: true, html: { style: "display:inline;" } do |f| %>
+<div class="modal-body">
  <% if @person.errors.any? %>
     <div id="error_explanation">
       <h2>
         <%= pluralize(@person.errors.count, "error") %> prohibited
         this article from being saved:
       </h2>
-      <ul>
+      <ul class="errors">
         <% @person.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
+  <div class="field form-group">
 <table>
-<tr><td><%=f.file_field :avatar %>
+<tr><td><%= image_tag @person.avatar.url(:thumb) %></td>
+<td><%=f.file_field :avatar %></td></tr>
 <tr><td><%= f.label :'Name' %></td>
 <td><%= f.text_field :'Name' %></td></tr>
 <tr><td><%= f.label :'Last name' %></td>
@@ -33,5 +38,12 @@
 <tr><td><%= f.label :'Bio' %></td>
 <td><%= f.text_field :'Bio' %></td></tr>
 </table>
-<%= f.submit %>
+</div>
+</div>
+    <div class="modal-footer">
+        <%= f.submit class: "btn btn-primary" %>
+        <%= link_to "Cancel", "#", class: "btn", data: {dismiss: "modal"} %>
+      </div>
 <% end %>
+  </div>
+</div>

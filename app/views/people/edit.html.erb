@@ -1,5 +1,16 @@
-<h1>Edit Person</h1>
- 
-<%= render 'form' %>
- 
-<%= link_to 'Back', people_path %>
+<!-- Modal -->
+  <div class="modal fade" id="new" tabindex="-1" role="dialog" aria-labelledby="new-<%= person %>" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="new">Notes</h4>
+        </div>
+        <div class="modal-body">
+    <%= render 'form' %>
+    </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
