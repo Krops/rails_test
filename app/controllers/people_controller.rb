@@ -19,10 +19,14 @@ class PeopleController < ApplicationController
     def update
 	@people = Person.all
 	@person = Person.find(params[:id])
-	@person.update_attributes(person_params)
+	if @person.update_attributes(person_params)
+	    redirect_to :action => 'index'
+	end
     end
-    def delete
+    def del
 	@person = Person.find(params[:person_id])
+	#redirect_to people_path
+	#render :template => 'people/delete.js.erb'
     end
     def destroy
 	@people = Person.all

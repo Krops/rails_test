@@ -1,6 +1,4 @@
-<div class="modal-dialog">
-  <div class="modal-content">
-<%= form_for @person, remote: true, authenticity_token: true, html: { style: "display:inline;" } do |f| %>
+<%= form_for @person, multipart: true, remote: true, authenticity_token: true, html: { style: "display:inline;" } do |f| %>
 <div class="modal-body">
  <% if @person.errors.any? %>
     <div id="error_explanation">
@@ -16,7 +14,7 @@
     </div>
   <% end %>
   <div class="field form-group">
-<table>
+<table class="table table-bordered table-striped">
 <tr><td><%= image_tag @person.avatar.url(:thumb) %></td>
 <td><%=f.file_field :avatar %></td></tr>
 <tr><td><%= f.label :'Name' %></td>

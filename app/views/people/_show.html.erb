@@ -19,7 +19,7 @@
     </div>
   <% end %>
   <div class="field form-group">
-<table>
+<table class="table table-bordered table-striped">
 <tr><td rowspan="9"><%= image_tag @person.avatar.url(:medium) %></td></tr>
 <% @person.attributes.each_with_index do |key,index| %>
 <% if index>1 and index<10 %>

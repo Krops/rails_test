@@ -1,4 +1,6 @@
-<div class="modal-header">
-  <h3><%= "Editing #{@person.Name}" %></h3>
+<div class="modal-dialog">
+  <div class="modal-content">
+<div class="header">
+    <h1>Edit: <%= @person.Name  %> <%= @person.Last_Name %></h1>
 </div>
 <%= render "form" %>

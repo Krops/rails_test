@@ -3,8 +3,9 @@
 
   # You can have the root of your site routed with "root"
 Rails.application.routes.draw do
+  #respond_to :js
   resources :people do
-    get "delete"
+    get "del"
   end
 
   root to: "products#index"
