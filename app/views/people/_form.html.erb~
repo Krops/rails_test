@@ -1,18 +1,21 @@
-<%= form_for @person do |f| %>
+<%= form_for @person, multipart: true, remote: true, authenticity_token: true, html: { style: "display:inline;" },:url => {:action => "show", :id => @person} do |f| %>
  <% if @person.errors.any? %>
     <div id="error_explanation">
       <h2>
         <%= pluralize(@person.errors.count, "error") %> prohibited
         this article from being saved:
       </h2>
-      <ul>
+      <ul class="errors">
         <% @person.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
-<table>
+  <div class="field form-group">
+<table class="table table-bordered table-striped">
+<tr><td><%= image_tag @person.avatar.url(:thumb) %></td>
+<td><%=f.file_field :avatar %></td></tr>
 <tr><td><%= f.label :'Name' %></td>
 <td><%= f.text_field :'Name' %></td></tr>
 <tr><td><%= f.label :'Last name' %></td>
@@ -31,6 +34,6 @@
 <td><%= f.text_field :'Other_contacts' %></td></tr>
 <tr><td><%= f.label :'Bio' %></td>
 <td><%= f.text_field :'Bio' %></td></tr>
-<%= f.submit %>
 </table>
+</div>
 <% end %>

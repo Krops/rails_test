@@ -1,9 +1,9 @@
-$("ul.errors").html("")
-<% if @person.errors.any? %>
-  <% @person.errors.full_messages.each do |message| %>
-    $("ul.errors").append($("<li />").html("<%= message.html_safe %>"))
-  <% end %>
-<% else %>
-  $("#person-index").html("<%= escape_javascript(render 'index') %>")
-  $("#person-modal").modal("hide")
-<% end %>
+  <div class="modal-body">
+  <ul class="error"></ul>
+  Are you sure you wish to save <b><%= @person.Name %> <%= @person.Last_Name %></b>?
+  </div>
+  <div class="modal-footer">
+    <%= link_to "Yes, Save This Person", person_path(@person), method: :submit, remote: true, class: "btn btn-danger" %>
+    <%= link_to "No, Please Don't", "#", class: "btn btn-default", data: { dismiss: "modal" } %>
+  </div>
+  </div>
